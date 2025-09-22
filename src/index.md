@@ -1,6 +1,6 @@
 ---
 title: CSSLabs.new - Latest in CSS
-layout: base.njk
+layout: home.njk
 ---
 
 <div class="py-20 px-4 text-center bg-gradient-to-r from-blue-400 to-purple-500 text-white">
