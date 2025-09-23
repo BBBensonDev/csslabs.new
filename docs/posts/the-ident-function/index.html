@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The ident() function is coming! - CSSLabs.new</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+    <div class="flex flex-col min-h-screen">
+        <header class="bg-white border-b border-gray-200">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="/assets/CSSLabsNew.webp" class="h-8 w-auto mr-2" alt="CSSLabs Logo">
+                            <span class="font-semibold text-xl">CSSLabs.new</span>
+                        </a>
+                    </div>
+                    <!-- Navigation -->
+                    <nav>
+                        <ul class="flex items-center space-x-6">
+                            <li><a href="/" class="hover:text-blue-600 transition ease-in-out duration-300">Home</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+                <article class="prose">
+                    <p>In <a href="https://drafts.csswg.org/css-values-5/">CSS Values 5</a> there is a new way to construct custom identifiers. CSS developers need to give unique identifiers to things like <code>container-name</code>, <code>view-transition/timeline-name</code>, and even the <code>anchor-name</code>. This is really exciting because the below syntax (borrowed from <a href="https://github.com/w3c/csswg-drafts/issues/9141">this example</a>) can be shrunk down, making CSS more D.R.Y. of a language.</p>
+<pre><code class="language-css">.parent {
+  timeline-scope: --tl-1, --tl-2, --tl-3;
+}
+
+nav {
+  li:nth-child(1) { animation-timeline: --tl-1; }
+  li:nth-child(2) { animation-timeline: --tl-2; }
+  li:nth-child(3) { animation-timeline: --tl-3; }
+}
+
+main {
+  div:nth-child(1) { view-timeline: --tl-1; }
+  div:nth-child(2) { view-timeline: --tl-2; }
+  div:nth-child(3) { view-timeline: --tl-3; }
+}
+</code></pre>
+<p>Let's talk about an example using navigation and navigation anchors, since this is the best place I see use for this feature.</p>
+<p>Taking a traditional navigation menu with drop-down menus within it, let's say this was our original CSS.</p>
+<pre><code class="language-css">.nav-item.has-dropdown:nth-child(1) { 
+  anchor-name: --nav-dropdown-1; 
+  /* other styles */
+}
+.nav-item.has-dropdown:nth-child(2) { 
+  anchor-name: --nav-dropdown-2; 
+  /* other styles */
+}
+.nav-item.has-dropdown:nth-child(3) { 
+  anchor-name: --nav-dropdown-3; 
+  /* other styles */
+}
+
+.dropdown:nth-child(1){
+  position-anchor: --nav-dropdown-1;
+  /* other styles */
+}
+.dropdown:nth-child(2){
+  position-anchor: --nav-dropdown-2;
+  /* other styles */
+}
+.dropdown:nth-child(3){
+  position-anchor: --nav-dropdown-3;
+  /* other styles */
+}
+</code></pre>
+<p>Now we can boil it down to this:</p>
+<pre><code class="language-css">.nav-item.has-dropdown  {
+  anchor-name: ident(&quot;--nav-dropdown-&quot; sibling-index());
+  /* other styles */
+}
+
+.dropdown {
+  position-anchor: ident(&quot;--nav-dropdown-&quot; sibling-index());
+  /* other styles */
+}
+</code></pre>
+<p>And even cooler, we can add <code>attr(id)</code> to ensure the popover goes to the right navigation item.</p>
+<pre><code class="language-css">.nav-item.has-dropdown  {
+  anchor-name: ident(&quot;--nav-dropdown-&quot; attr(id));
+  /* other styles */
+}
+
+/* ... */
+</code></pre>
+<p>This is really exciting for the future of CSS. It isn't available yet, <a href="https://chromestatus.com/feature/6230159413477376">only issued in Chrome Status 4 months ago</a>, but when I saw this I immediately wanted to use it because this will make for a very useful feature.</p>
+
+                </article>
+            </div>
+        </main>
+
+        <footer class="bg-gray-100 border-t border-gray-200 py-8">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-sm text-gray-500">
+                <p>&copy;  CSSLabs.new. All rights reserved. Articles licensed CC BY 4.0.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
