@@ -12,7 +12,7 @@ layout: home.njk
 <section class="py-12 px-4">
   <h2 class="text-3xl font-bold mb-6 text-gray-800">Latest Articles</h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    {% for post in collections.posts | slice(0,3) %}
+    {%- for post in collections.posts -%}
       <div class="bg-white rounded-lg shadow-md">
         <div class="aspect-w-16 aspect-h-9">
           <img src="https://picsum.photos/1600/900" alt="{{ post.data.title }}" class="object-cover rounded-t-lg">
