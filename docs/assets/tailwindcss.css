@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
-@layer utilities {
-  .prose {
-    --tw-prose-pre-bg:#2b2b2b !important;
-  }
+.prose pre {
+  --tw-prose-pre-bg:#2b2b2b !important;
 }

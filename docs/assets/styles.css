@@ -1067,10 +1067,8 @@
     }
   }
 }
-@layer utilities {
-  .prose {
-    --tw-prose-pre-bg: #2b2b2b !important;
-  }
+.prose pre {
+  --tw-prose-pre-bg: #2b2b2b !important;
 }
 @property --tw-space-x-reverse {
   syntax: "*";
