@@ -1067,8 +1067,8 @@
     }
   }
 }
-.prose pre {
-  --tw-prose-pre-bg: #2b2b2b !important;
+pre > .hljs {
+  background: transparent !important;
 }
 @property --tw-space-x-reverse {
   syntax: "*";

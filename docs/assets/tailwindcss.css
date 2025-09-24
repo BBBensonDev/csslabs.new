@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
-.prose pre {
-  --tw-prose-pre-bg:#2b2b2b !important;
+pre > .hljs {
+  background: transparent !important;
 }
