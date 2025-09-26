@@ -15,8 +15,7 @@ layout: home.njk
     {%- for post in collections.posts -%}
       <div class="bg-white rounded-lg shadow-md">
         <div class="aspect-w-16 aspect-h-9">
-          <img src="https://picsum.photos/1600/900" alt="{{ post.data.title }}" class="object-cover rounded-t-lg">
-        </div>
+          <img src="https://picsum.photos/seed/{{ post.fileSlug }}/1600/900" alt="{{ post.data.title }}" class="object-cover rounded-t-lg">    </div>
         <div class="p-4">
           <h3 class="text-xl font-semibold mb-2"><a href="{{ post.url }}" class="text-blue-600 hover:text-blue-800 transition-colors duration-200">{{ post.data.title }}</a></h3>
           <p>{{ post.data.description }}</p>
