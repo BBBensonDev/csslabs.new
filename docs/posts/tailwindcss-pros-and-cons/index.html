@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailwindCSS - 3 Pros and 3 Cons - CSSLabs.new</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+    <div class="flex flex-col min-h-screen">
+        <header class="bg-white border-b border-gray-200">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="/assets/CSSLabsNew.webp" class="h-8 w-auto mr-2" alt="CSSLabs Logo">
+                            <span class="font-semibold text-xl">CSSLabs.new</span>
+                        </a>
+                    </div>
+                    <!-- Navigation -->
+                    <nav>
+                        <ul class="flex items-center space-x-6">
+                            <li><a href="/" class="hover:text-blue-600 transition ease-in-out duration-300">Home</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+                <article class="prose">
+                    <h2>TailwindCSS - 3 Pros and 3 Cons</h2>
+<p>I have written on my personal blog on <a href="https://blog.barrybenson.dev/2025/09/tailwindcss-is-not-best.html">why I think TailwindCSS is not the best</a> (Note: I used blogger, which is buggy as all heck), and what inspired me to create CSSLabs.new is the cons of using Tailwind. I have my reasons to dislike Tailwind, but man can it be useful. I am going to share 3 pros and 3 cons to TailwindCSS, and maybe share with you why I <em>sometimes</em> avoid it.</p>
+<h3>A quick note before we begin</h3>
+<p>CSSLabs.new is entirely written in TailwindCSS, no custom CSS in sight. That is mostly because for building a quick 11ty blog to share the newest in CSS outside of Tailwind, it only made sense to make this faster and better than worry about the nitty gritty in styles, which brings us to...</p>
+<h3>Pro 1. Tailwind is perfect for launching fast</h3>
+<p>It's not that you don't need to think of the design first, but rather that Tailwind is just easier to write than CSS by itself in some cases. Things like blogs with Tailwind's typography plugin are perfect for blogs like this, and why I chose to use it, despite having my reservations not that long ago. It also works well with AI which I did use to get the most out of this domain name, which cost me an arm and a leg.</p>
+<h3>Con 1. Tailwind isn't great for larger scale projects</h3>
+<p>Tailwind has a massive scaling issue once your designs and needs get big enough. Even if you use your code editor and framework perfectly, I have found that sites with very complex style needs make Tailwind more of a burden than a helpful tool. If you have a medium sized project, with medium amounts of Tailwind classes, and using the right tools and frameworks, you shouldn't run into this issue.</p>
+<h3>Pro 2. Tailwind has great defaults</h3>
+<p>The benefit of Tailwind's defaults is that they are designed by, well, designers. The spacing defaults and default colors should get you 90% of the way to a small or medium project's completion. Like I said in con one, Tailwind does struggle when things get too complicated, and becomes more of a hinderence for large to massive design projects, but is still perfect for a blog author, or a quick prototype of your product because of its sensible defaults.</p>
+<h3>Con 2. Changing Tailwind's defaults is STUPID</h3>
+<p>When I saw they were going for a CSS-first config, at first I was excited, but now I am dreading having to add custom styles anywhere to the config. The JS config made sense in my mind because you were setting Tailwind up in a way that could very easily be implemented into a quick JS configuration that Tailwind could use to build everything else more cleanly. You also had more control back then. I know it <em>might</em> be faster, (I am not an expert so I don't know) but there still is a lot of work before I would consider the CSS-based config to be anything helpful again.</p>
+<h3>Pro 3. &quot;I am Speed&quot; - Tailwind, probably</h3>
+<p>TailwindCSS is insanely fast, often recording CSS build times in the micro-seconds. This is great because it takes more time to blink than get your styles ready to use in any framework. Meaning you don't need to wait for Tailwind to do its magic, it just does it before you can realize it happened.</p>
+<h3>Con 3. Tailwind CSS's lies on being smaller 100% of the time</h3>
+<p>Writing component-based, it often has the ability to be close to two thirds the size of the same project implemented in Tailwind (see the original post I did in the introduction for more information). This normally wouldn't matter, but on the <strong>global</strong> internet, where in some places, every byte matters, can be a drawback. This is one of the key areas Tailwind fails in larger or more complex designs, or even just the average uniform design.</p>
+<h3>Conclusion</h3>
+<p>Should you use Tailwind? I'm not your mom, do what you want. But be realistic about how Tailwind functions and know your options. Tailwind doesn't support all the new features right away, some of them need to be added in the square bracket syntax, some of it cannot be done in such a way. Overall, just trust your gut, and always be experimenting!</p>
+
+                </article>
+            </div>
+        </main>
+
+        <footer class="bg-gray-100 border-t border-gray-200 py-8">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-sm text-gray-500">
+                <p>&copy;  CSSLabs.new. All rights reserved. Articles licensed CC BY 4.0.</p>
+            </div>
+        </footer>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/a11y-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/css.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
