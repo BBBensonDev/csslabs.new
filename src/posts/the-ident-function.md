@@ -3,6 +3,7 @@ title: The ident() function is coming!
 layout: base.njk
 date: 2025-09-23
 description: How CSS is making unique identifiers easier and faster to write
+author: Samantha
 ---
 
 In [CSS Values 5](https://drafts.csswg.org/css-values-5/) there is a new way to construct custom identifiers. CSS developers need to give unique identifiers to things like `container-name`, `view-transition/timeline-name`, and even the `anchor-name`. This is really exciting because the below syntax (borrowed from [this example](https://github.com/w3c/csswg-drafts/issues/9141)) can be shrunk down, making CSS more D.R.Y. of a language.

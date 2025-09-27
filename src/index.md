@@ -19,6 +19,8 @@ layout: home.njk
         <div class="p-4">
           <h3 class="text-xl font-semibold mb-2"><a href="{{ post.url }}" class="text-blue-600 hover:text-blue-800 transition-colors duration-200">{{ post.data.title }}</a></h3>
           <p>{{ post.data.description }}</p>
+          <p><small>By {{ post.data.author }}</small></p>
+          <p><small><i>{{ post.data.date | parseDate }}</i></small></p>
         </div>
       </div>
     {% endfor %}

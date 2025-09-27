@@ -3,6 +3,7 @@ title: Welcome to CSSLabs.new!!
 layout: base.njk
 date: 2025-09-21
 description: Welcome to the home of the latest and greatest CSS announcements, showcases, and more!
+author: Samantha
 ---
 
 ## Welcome to the Future of CSS: Introducing CSSLabs.new!

@@ -3,6 +3,7 @@ title: How to find new CSS features
 layout: base.njk
 date: 2025-09-23
 description: How we, and you, can find exciting new CSS features that are baking in the oven.
+author: Samantha
 ---
 
 ## How to find new CSS features
