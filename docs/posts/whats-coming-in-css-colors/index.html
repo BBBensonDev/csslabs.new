@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What&#39;s coming in CSS Colors Module 6? - CSSLabs.new</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+    <div class="flex flex-col min-h-screen">
+        <header class="bg-white border-b border-gray-200">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="/assets/CSSLabsNew.webp" class="h-8 w-auto mr-2" alt="CSSLabs Logo">
+                            <span class="font-semibold text-xl">CSSLabs.new</span>
+                        </a>
+                    </div>
+                    <!-- Navigation -->
+                    <nav>
+                        <ul class="flex items-center space-x-6">
+                            <li><a href="/" class="hover:text-blue-600 transition ease-in-out duration-300">Home</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+                <article class="prose">
+                    <h2>What's coming in CSS Colors Module 6?</h2>
+<p>I want to make this clear: <strong>This module is <em>NOT</em> ready for production, and is an early draft with things bound to change. <q>This spec is not yet ready for implementation. It exists in this repository to record the ideas and promote discussion.</q></strong> I want to provide some discussion into CSS Module Level 6 well before it is implemented, and why I think this is a strong solution to daily developer problems.</p>
+<h3>Some context about WCAG color</h3>
+<h4>&quot;Explain like I am five&quot;</h4>
+<p>Web developers face a problem. Imagine you have two crayons, one light like a bright yellow sun, and one dark like the night sky.</p>
+<p>Sometimes, when you draw with a yellow crayon on yellow paper, it's really hard to see what you've drawn, right? It's like the drawing disappears!</p>
+<p>WCAG stands for &quot;Web Content Accessibility Guidelines.&quot; WCAG is like a special rulebook that helps web developers make sure that when they put words or pictures on a computer screen, they use colors that are easy for EVERYONE to see.</p>
+<p>So, the rulebook says: &quot;If you use a bright yellow word, make sure the paper behind it is a dark color, like blue or black. Or, if you use a dark blue word, make sure the paper behind it is a light color, like white or yellow.&quot;</p>
+<p>This is so that even if someone has a hard time seeing colors, or if the sun is shining on their screen, they can still read all the words and see all the pictures clearly, just like you can easily see a dark drawing on light paper! It's all about making sure no one's drawing &quot;disappears.&quot;</p>
+<p>One very important part of WCAG is about color contrast. You know how if you write with a light yellow crayon on a white piece of paper, it's super hard to read? Or if you put a dark blue sticker on a black shirt, it's tough to see? That's a contrast problem.</p>
+<p>WCAG gives specific rules, like a special measuring stick, to make sure that the colors used for text and important graphics are different enough from the background colors.</p>
+<ul>
+<li>
+<p>&quot;AA&quot; is like the &quot;good&quot; level. It means the colors have enough difference that most people, even those with some vision issues, can easily tell them apart and read the text. It's like writing with a dark blue pen on light blue paper – pretty good!</p>
+</li>
+<li>
+<p>&quot;AAA&quot; is like the &quot;best&quot; level. It means the colors have an even bigger difference, making them super easy to see for almost everyone, even those with more significant vision challenges. This would be like writing with a dark blue pen on white paper</p>
+</li>
+</ul>
+<p>So, the idea is to avoid combinations where colors blend together too much, making text invisible or hard to read. By following these contrast rules, websites become much friendlier and usable for a wider range of people, making sure important information isn't &quot;hidden&quot; by poor color choices.</p>
+<p>For text and images of text, WCAG 2.1 specifies the following minimum contrast ratios:</p>
+<ul>
+<li>AA (Level A):
+<ul>
+<li>Normal text: A contrast ratio of at least 4.5:1</li>
+<li>Large text: A contrast ratio of at least 3:1
+<ul>
+<li>&quot;Large text&quot; is defined as text that is at least 18pt (24px) or 14pt (18.66px) and bold.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>AAA (Level AAA):
+<ul>
+<li>Normal text: A contrast ratio of at least 7:1</li>
+<li>Large text: A contrast ratio of at least 4.5:1
+<ul>
+<li>Again, &quot;Large text&quot; is defined as text that is at least 18pt (24px) or 14pt (18.66px) and bold.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>That is the very short ELI5 of it, at least. TL;DR, the higher the WCAG ratio, generally the better for visibility. This is a gross over-simplification of the WCAG spec, but it's enough context for the rest of this article.</p>
+<h3>The two functions coming in CSS Color Module 6</h3>
+<p>DISCLAIMER: They might add another function, or remove one (or both) of these functions, but I recommend they keep them.</p>
+<p>CSS Color Module 6 core additions are <code>contrast-color()</code> and <code>color-layers()</code>. We will only talk about <code>contrast-color()</code> for this article as it's the only one that has examples at this time.</p>
+<h4><code>contrast-color()</code></h4>
+<p><em>The TL;DR: The contrast-color() function allows developers to automatically select a color from a list of candidates that provides sufficient contrast against a specified base color. It supports various target contrast levels, primarily using WCAG 2.1 guidelines (e.g., 'AA', 'AAA'). If no target contrast is specified, it picks the candidate with the highest contrast. This function aims to eliminate manual contrast computations, ensuring better readability and accessibility. The document also addresses how to handle semi-transparent colors by blending them against an opaque background.</em></p>
+<p>The syntax:</p>
+<pre><code>&lt;contrast-color()&gt; = contrast-color(
+  [ [ &lt;color&gt; &amp;&amp; [ tbd-fg | tbd-bg ] &amp;&amp; &lt;target-contrast&gt;? ] |
+    [ &lt;color&gt; &amp;&amp; [ tbd-fg | tbd-bg ] &amp;&amp; &lt;target-contrast&gt;, &lt;color&gt;# ] ] )
+</code></pre>
+<p>Effectively speaking, the optional <code>&lt;color&gt;</code> value represents target colors that the developer wants in use, say <code>#2b2b2b</code>, <code>oklch(...)</code>, and/or <code>var(--color-primary-400)</code>, and uses whichever color comes out with the highest contrast value. If no <code>&lt;color&gt;</code> is defined, white and black are used for the calculations. I would recommend adding some colors you think should work for the calculation. The first <code>&lt;color&gt;</code> value is the color that should be compared as the 1 in the <code>n:1</code> ratio.</p>
+<p>Let's take the CSS working group's example and follow it step by step. Let's say we had this code:</p>
+<pre><code class="language-css">.example {
+  background-color: wheat;
+  color: contrast-color(wheat tbd-bg wcag2(aa), bisque, darkgoldenrod, olive, sienna, darkgreen, maroon);
+}
+</code></pre>
+<p>We set a background/base color of <code>wheat</code>, and determine the base color's role as a &quot;background color&quot;. To do a foreground color, it would be <code>tbd-fg</code>, and is an optional. Why are they called <code>tbd-*</code>? Well, according to <strong>ISSUE 1</strong> in the current draft:</p>
+<blockquote>
+<p>The keywords to specify whether the base color is a foreground or background are TBD. [Issue #7359]</p>
+</blockquote>
+<p>Next we decide whether we want AA or AAA contrast, in the example by the spec, they use AA. Another example later also uses an exact ratio of <code>5.8:1</code> in example 2, so a value of <code>wcag2(5.8)</code>. But back to the original example:</p>
+<p>Finally is the list of colors to decide on, which include <code>bisque</code>, <code>darkgoldenrod</code>, <code>olive</code>, <code>sienna</code>, <code>darkgreen</code>, and <code>maroon</code>. Taking wheat, on AA scale.</p>
+<ul>
+<li>wheat (<code>#f5deb3</code>), the background, has relative luminance <code>0.749</code></li>
+<li>bisque (<code>#ffe4c4</code>) has relative luminance <code>0.807</code> and contrast ratio <code>1.073</code></li>
+<li>darkgoldenrod (<code>#b8860b</code>) has relative luminance <code>0.273</code> and contrast ratio <code>2.477</code></li>
+<li>olive (<code>#808000</code>) has relative luminance <code>0.200</code> and contrast ratio <code>3.193</code></li>
+<li>sienna (<code>#a0522d</code>) has relative luminance <code>0.137</code> and contrast ratio <code>4.274</code></li>
+<li>darkgreen (<code>#006400</code>) has relative luminance <code>0.091</code> and contrast ratio <code>5.662</code></li>
+<li>maroon (<code>#800000</code>) has relative luminance <code>0.046</code> and contrast ratio <code>8.333</code></li>
+</ul>
+<p>The first color in the list which meets the desired contrast ratio of 4.5 is darkgreen. If we went for the <code>wcag(5.8)</code> example, it would be <code>maroon</code>, since it is the first to pass <code>5.8:1</code>. If somehow no color met the contrast ratio, it would either be white or black depending on which of the two had a higher contrast ratio. If no contrast ratio is defined, then whatever highest value in the list of options would be the selected color.</p>
+<h3>Should this spec be approved as-is?</h3>
+<p>For <code>contrast-color()</code>, other than the keywords needing proper decisions and not a temporary placeholder, yes. Once this feature launches, it will be the single best thing for customization of UIs, and there are many other uses like just picking the best color to use for accessibility reasons. This is more revolutionary than the <code>if()</code> function in CSS, and will undoubtedly become a common feature in new CSS projects.</p>
+
+                </article>
+            </div>
+        </main>
+
+        <footer class="bg-gray-100 border-t border-gray-200 py-8">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-sm text-gray-500">
+                <p>&copy;  CSSLabs.new. All rights reserved. Articles licensed CC BY 4.0.</p>
+            </div>
+        </footer>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/a11y-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/css.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
